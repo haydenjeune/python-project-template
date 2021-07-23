@@ -1,11 +1,11 @@
 MAKEFLAGS += --warn-undefined-variables
 SHELL = /bin/bash -o pipefail
-.PHONY: help install clean
+.PHONY: help install clean run
 
 pyversionfile := .python-version
 pyversion := $(shell cat ${pyversionfile})
 
-venv := ~/.virtualenvs/{{cookiecutter.project_name}}
+venv := .venv
 python := $(venv)/bin/python
 pip := $(venv)/bin/pip
 pip-compile := $(venv)/bin/pip-compile
