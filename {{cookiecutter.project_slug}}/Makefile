@@ -1,6 +1,6 @@
 MAKEFLAGS += --warn-undefined-variables
 SHELL = /bin/bash -o pipefail
-.PHONY: help install clean run
+.PHONY: help install clean run hooks
 
 pyversionfile := .python-version
 pyversion := $(shell cat ${pyversionfile})
@@ -10,12 +10,8 @@ python := $(venv)/bin/python
 pip := $(venv)/bin/pip
 pip-compile := $(venv)/bin/pip-compile
 
-# display this help message
-help:
-	@awk '/^##.*$$/,/^[~\/\.a-zA-Z_-]+:/' $(MAKEFILE_LIST) | awk '!(NR%2){print $$0p}{p=$$0}' | awk 'BEGIN {FS = ":.*?##"}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' | sort
-
 # install/upgrade requirements in the virtualenv
-install: $(venv) install-hooks
+install: $(venv) .git/hooks/pre-commit
 
 # remove the virtualenv
 clean:
@@ -25,26 +21,24 @@ clean:
 run: $(venv)
 	python {{cookiecutter.project_name}}/main.py
 
+# run pre-commit hooks on all files
+hooks: .git/hooks/pre-commit
+	$(venv)/bin/pre-commit run -a
+
 $(pip): $(pyversionfile)
-	# create new virtualenv $(venv) containing pip
-	$(if $(value VIRTUAL_ENV),$(error Cannot create a virtualenv when running in a virtualenv. Please deactivate the current virtual env $(VIRTUAL_ENV)),)
 	pyenv install -s $(pyversion)
 	python -m venv --clear $(venv)
 	$(pip) install pip-tools
 
 requirements.txt: requirements.in $(pip)
-	$(pip-compile) --no-index requirements.in
+	$(venv)/bin/pip-compile --no-emit-index-url requirements.in
 
 requirements.dev.txt: requirements.dev.in $(pip)
-	$(pip-compile) --no-index requirements.dev.in
+	$(venv)/bin/pip-compile --no-emit-index-url requirements.dev.in
 
 $(venv): requirements.txt requirements.dev.txt $(pip)
 	$(pip) install -e '.[dev]'
 	touch $(venv)
 
-install-hooks: $(venv)
+.git/hooks/pre-commit: $(venv) .pre-commit-config.yaml
 	$(venv)/bin/pre-commit install
-
-hooks: install-hooks
-	$(venv)/bin/pre-commit run -a
-
