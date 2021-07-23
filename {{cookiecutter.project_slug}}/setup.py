@@ -1,8 +1,10 @@
 from setuptools import setup, find_packages
 
 def parse_reqs(filename):
-    with open("requirements.txt") as reqs:
-        reqs = reqs.read().strip().split("\n")
+    with open(filename) as f:
+        lines = f.readlines()
+        no_space = [l.strip() for l in lines]
+        reqs = [r for r in no_space if r and not r.startswith("#")]
     return reqs
 
 setup(
