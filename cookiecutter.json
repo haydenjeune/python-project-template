@@ -2,6 +2,6 @@
     "project_slug": "python-project",
     "project_name": "{{ cookiecutter.project_slug.lower().replace('-', '_') }}",
     "project_description": "A python based project",
-    "python_version": "3.8.2"
+    "python_version": "3.9.2"
   }
   
