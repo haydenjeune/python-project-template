@@ -28,6 +28,7 @@ hooks: .git/hooks/pre-commit
 $(pip): $(pyversionfile)
 	pyenv install -s $(pyversion)
 	python -m venv --clear $(venv)
+	$(pip) install --upgrade pip
 	$(pip) install pip-tools
 
 requirements.txt: requirements.in $(pip)
