@@ -1,11 +1,18 @@
 #! /bin/bash
 
-# TODO: make sure if one command fails, they all do. look at set -e just watch for caveats
-
 DIR=/tmp/.test
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
 
 if [ -d "$DIR" ]; then
     rm -rf "$DIR"
 fi
 
-cookiecutter --no-input -f -o "$DIR" .
+if cookiecutter --no-input -f -o "$DIR" .; then
+    printf "\n${GREEN}PASS:${NC} Successfully generated project.\n"
+else
+    printf "\n${RED}FAIL:${NC} Failed to generate project. Output is above.\n"
+    exit 1
+fi
