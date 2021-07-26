@@ -1,0 +1,20 @@
+name: CI
+on: push
+
+jobs:
+  test:
+    name: Test Project Generation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install CookieCutter
+        run: pip install cookiecutter
+
+      - name: Configure Git
+        run: git config --global user.email "you@example.com" && git config --global user.name "Your Name"
+
+      - name: Run test
+        run: ./tests/test_project_generation.sh
