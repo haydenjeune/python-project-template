@@ -25,4 +25,4 @@ cookiecutter gh:haydenjeune/python-project-template
 Right now this template has the below features, with more to come.
 
 - Dependency management with `virtualenv` and `pip-compile`
-- Formatting and type checking on pre-commit hooks
+- Formatting, type checking, and linting on pre-commit hooks
