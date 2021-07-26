@@ -4,8 +4,8 @@ from setuptools import setup, find_packages
 def parse_reqs(filename):
     with open(filename) as f:
         lines = f.readlines()
-        no_space = [l.strip() for l in lines]
-        reqs = [r for r in no_space if r and not r.startswith("#")]
+        stripped_lines = [line.strip() for line in lines]
+        reqs = [line for line in stripped_lines if line and not line.startswith("#")]
     return reqs
 
 

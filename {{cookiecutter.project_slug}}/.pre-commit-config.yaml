@@ -19,3 +19,8 @@ repos:
         pass_filenames: false
         types: [python]
         additional_dependencies: ["pyright@1.1.99"]
+  - repo: https://github.com/pycqa/flake8
+    rev: "3.9.2"
+    hooks:
+      - id: flake8
+        name: Lint Python (flake8)
