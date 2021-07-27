@@ -4,13 +4,11 @@ Welcome to my python project template.
 
 ## Requirements
 
-Ensure `cookiecutter` is installed. A good place to do this at the user level as below.
-
-```
-pip install --user cookiecutter
-```
-
-To run the generated project, `pyenv` and `virtualenvwrapper` are required. Both can be installed with Homebrew.
+To generate a project, you will need:
+- Cookiecutter
+- Git
+- Make
+- Python
 
 ## Usage
 

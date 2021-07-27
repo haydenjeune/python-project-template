@@ -2,9 +2,6 @@ MAKEFLAGS += --warn-undefined-variables
 SHELL = /bin/bash -o pipefail
 .PHONY: help install clean run hooks
 
-pyversionfile := .python-version
-pyversion := $(shell cat ${pyversionfile})
-
 venv := .venv
 python := $(venv)/bin/python
 pip := $(venv)/bin/pip
@@ -26,7 +23,6 @@ hooks: .git/hooks/pre-commit
 	$(venv)/bin/pre-commit run -a
 
 $(pip): $(pyversionfile)
-	pyenv install -s $(pyversion)
 	python -m venv --clear $(venv)
 	$(pip) install --upgrade pip
 	$(pip) install pip-tools
