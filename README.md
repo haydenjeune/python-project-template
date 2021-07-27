@@ -1,3 +1,5 @@
+[![CI](https://github.com/haydenjeune/python-project-template/actions/workflows/ci.yaml/badge.svg)](https://github.com/haydenjeune/python-project-template/actions/workflows/ci.yaml)
+
 # Python Project Template
 
 Welcome to my python project template.
@@ -5,6 +7,7 @@ Welcome to my python project template.
 ## Requirements
 
 To generate a project, you will need the following tools installed and accessible from the current shell:
+
 - Git
 - Make
 - A Python installation
