@@ -20,7 +20,7 @@ run: $(venv)
 
 # run tests
 test: $(venv)
-	$(venv)/bin/pytest -v ./tests
+	$(venv)/bin/pytest -v --cov={{cookiecutter.project_name}} --cov-report term-missing ./tests
 
 # run pre-commit hooks on all files
 hooks: .git/hooks/pre-commit
