@@ -4,11 +4,11 @@ Welcome to my python project template.
 
 ## Requirements
 
-To generate a project, you will need:
-- Cookiecutter
+To generate a project, you will need the following tools installed and accessible from the current shell:
 - Git
 - Make
-- Python
+- A Python installation
+- Cookiecutter (A pip installable Python package. Consider using [pipx](https://github.com/pypa/pipx) to install globally)
 
 ## Usage
 
