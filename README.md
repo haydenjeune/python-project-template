@@ -30,4 +30,4 @@ Right now this template has the below features, with more to come.
 - Type checking with `pyright`
 - Linting with `flake8`
 - Checks running on `pre-commit` hooks
-- Tests with `pytest`
+- Tests with `pytest` (with code coverage reports using `coverage`)
