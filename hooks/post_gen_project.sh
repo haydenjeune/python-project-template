@@ -7,3 +7,5 @@ make install
 
 git add .
 git commit -m "Initial commit"
+
+make test

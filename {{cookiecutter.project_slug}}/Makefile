@@ -1,6 +1,6 @@
 MAKEFLAGS += --warn-undefined-variables
 SHELL = /bin/bash -o pipefail
-.PHONY: help install clean run hooks
+.PHONY: help install clean run hooks test
 
 venv := .venv
 python := $(venv)/bin/python
@@ -17,6 +17,10 @@ clean:
 # run main.py
 run: $(venv)
 	python {{cookiecutter.project_name}}/main.py
+
+# run tests
+test: $(venv)
+	$(venv)/bin/pytest -v ./tests
 
 # run pre-commit hooks on all files
 hooks: .git/hooks/pre-commit

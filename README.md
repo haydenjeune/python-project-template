@@ -29,4 +29,5 @@ Right now this template has the below features, with more to come.
 - Formatting with `black`
 - Type checking with `pyright`
 - Linting with `flake8`
-- Checks running on pre-commit hooks
+- Checks running on `pre-commit` hooks
+- Tests with `pytest`
