@@ -1,2 +1,4 @@
+-c requirements.txt
+
 # put your dev requirements here
 pre-commit~=2.13.0

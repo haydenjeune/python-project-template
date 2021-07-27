@@ -30,7 +30,7 @@ $(pip): $(pyversionfile)
 requirements.txt: requirements.in $(pip)
 	$(venv)/bin/pip-compile --no-emit-index-url requirements.in
 
-requirements.dev.txt: requirements.dev.in $(pip)
+requirements.dev.txt: requirements.dev.in requirements.txt $(pip)
 	$(venv)/bin/pip-compile --no-emit-index-url requirements.dev.in
 
 $(venv): requirements.txt requirements.dev.txt $(pip)
