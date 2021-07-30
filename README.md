@@ -29,5 +29,6 @@ Right now this template has the below features, with more to come.
 - Formatting with `black`
 - Type checking with `pyright`
 - Linting with `flake8`
+- Sorting of import statements with `isort`
 - Checks running on `pre-commit` hooks
 - Tests with `pytest` (with code coverage reports using `coverage`)

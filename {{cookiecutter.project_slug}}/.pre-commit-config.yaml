@@ -24,3 +24,8 @@ repos:
     hooks:
       - id: flake8
         name: Lint Python (flake8)
+  - repo: https://github.com/pycqa/isort
+    rev: "5.8.0"
+    hooks:
+      - id: isort
+        name: Sort Dependencies (isort)
