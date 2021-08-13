@@ -16,7 +16,7 @@ clean:
 
 # run main.py
 run: $(venv)
-	python {{cookiecutter.project_name}}/main.py
+	$(python) {{cookiecutter.project_name}}/main.py
 
 # run tests
 test: $(venv)
